@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KlasseApp</string>
+
+    <string-array name="data_array">
+        <item>AMO1</item>
+        <item>AMO2</item>
+        <item>AMO3</item>
+
+    </string-array>
+</resources>
