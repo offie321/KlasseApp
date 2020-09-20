@@ -13,11 +13,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-
+    String klasNaam;
     String Klas;
 
     EditText nameInput;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+    String[] data1 = {"Fruits"};
+    String[] data2 = {"Jan Peter"};
+    String[] data3 = {"Klaas Janssen"};
 
     //AMO1
     ArrayList<String> arrayList1;
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,30 +59,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nameInput = findViewById(R.id.personNameInput);
 
 
-
         addStud = findViewById(R.id.btnAdd);
         lv = findViewById(R.id.listView1);
 
-
         final Spinner spinData = findViewById(R.id.spinData);
 
-        //AMO1
-        arrayList1 = new ArrayList<String>();
-        adapter1 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList1);
+        if (klasNaam == "AMO1"){
+            //AMO1
+            arrayList1 = new ArrayList<String>(Arrays.asList(data1));
+            adapter1 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList1);
 
-        lv.setAdapter(adapter1);
+            lv.setAdapter(adapter1);
+        }else if(klasNaam == "AMO2"){
+            //AMO2
+            arrayList2 = new ArrayList<String>(Arrays.asList(data2));
+            adapter2 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList2);
 
-        //AMO2
-        arrayList2 = new ArrayList<String>();
-        adapter2 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList2);
+            lv.setAdapter(adapter2);
+        }else if(klasNaam == "AMO3"){
+            //AMO3
+            arrayList3 = new ArrayList<String>(Arrays.asList(data3));
+            adapter3 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList3);
 
-        lv.setAdapter(adapter2);
+            lv.setAdapter(adapter3);
+        }else{
+            //AMO1
+            arrayList1 = new ArrayList<String>(Arrays.asList(data1));
+            adapter1 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList1);
 
-        //AMO3
-        arrayList3 = new ArrayList<String>();
-        adapter3 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList3);
+            lv.setAdapter(adapter1);
+        }
 
-        lv.setAdapter(adapter3);
+
+
+
+
 
 
 
@@ -106,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btnAdd:
                 inputName = nameInput.getText().toString();
+                arrayList1.add(inputName);
+                adapter1.notifyDataSetChanged();
                 fillList();
                 break;
         }
@@ -114,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //TODO Pak de geselecteerde klas.
     //In de variabele klas wordt de waarde van de geselecteerde klas opgeslagen.
     public void getKlas(String m) {
-//        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
         Klas = m;
     }
 
@@ -123,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (Klas) {
             case "AMO1":
                 Toast.makeText(this, "hello AMO1", Toast.LENGTH_SHORT).show();
-
+                klasNaam = "AMO1";
                 arrayList1.add(inputName);
                 adapter1.notifyDataSetChanged();
 
@@ -131,11 +150,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case "AMO2":
+                klasNaam = "AMO2";
                 arrayList2.add(inputName);
                 adapter2.notifyDataSetChanged();
                 break;
 
             case "AMO3":
+                klasNaam = "AMO3";
                 arrayList3.add(inputName);
                 adapter3.notifyDataSetChanged();
                 break;

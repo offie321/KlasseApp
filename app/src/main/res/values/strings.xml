@@ -14,19 +14,19 @@
         <item>Karen Klok</item>
     </string-array>
 
-    <string-array name="arrayList1">
+    <string-array name="al1">
         <item>AMO1 Bos</item>
         <item>Pieter Post</item>
         <item>Karen Klok</item>
     </string-array>
 
-    <string-array name="arrayList2">
+    <string-array name="al2">
         <item>AMO2 Bos</item>
         <item>Pieter Post</item>
         <item>Karen Klok</item>
     </string-array>
 
-    <string-array name="arrayList3">
+    <string-array name="al3">
         <item>AMO3 Bos</item>
         <item>Pieter Post</item>
         <item>Karen Klok</item>
